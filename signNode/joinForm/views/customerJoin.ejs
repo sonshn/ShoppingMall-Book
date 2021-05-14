@@ -64,35 +64,16 @@
                                 return;
                             }
 
-                            $("#joinForm").submit();
+                            $("#customerJoin").submit();
                 });
             });
         </script>
     </head>
     <body>
         <h1><%=title %></h1>
-        <form id = "chooseForm" action = "/join" method = "post">
-            <tr>
-                <td colspan="3">
-                    <input type = "button" id = "customer" name = "customer" value = "구매자" onclick="location.href = '/join/customer'">
-                    <input type = "button" id = "seller" name = "seller" value = "판매자" onclick="location.href = '/join/seller'">
-                    <input type = "button" id = "employee" name = "employee" value = "관리자" onclick="location.href = '/join/employee'">
-                </td>
-            </tr>
-        </form>
         <br></br>
-        <form id = "joinForm" action = "/join" method = "post">
+        <form id = "customerJoin" action = "/join/customer" method = "post">
             <table width = "400" border = "2">
-                <!-- <tr>
-                    <th>분류</th>
-                    <td>
-                        <select name="job" id = "job">
-                            <option value = "구매자">구매자</option>
-                            <option value = "판매자">판매자</option>
-                            <option value = "관리자">관리자</option>
-                        </select>
-                    </td>
-                </tr> -->
                 <tr>
                     <th>아이디</th>
                     <td><input type = "text" name = "id" id = "id" size = "12" maxlength = "12"> </td>
