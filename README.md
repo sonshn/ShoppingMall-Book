@@ -1,7 +1,7 @@
 # ShoppingMall-Book
 Repository for ShoppingMall-Book (SourceTree)
 --
-**늘 push -> 스테이지 올리기 -> commit -> push**
+**늘 pull -> 스테이지 올리기 -> commit -> push**
 --
 5/13 Create Repository + Registration Implementation Start
 
