@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+// passport-local 설치
+// const passport = require('passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -10,9 +12,14 @@ var join = require('./routes/joinForm');
 var customerJoin = require('./routes/customerJoin');
 var sellerJoin = require('./routes/sellerJoin');
 var employeeJoin = require('./routes/employeeJoin');
+var login = require('./routes/login');
+//var bookDetailPage = require('./routes/detail');
 //var board = require('./routes/board');
 
+// const passportConfig = require('./passport');
+
 var app = express();
+// passportConfig();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,7 +37,12 @@ app.use('/join',join);
 app.use('/join/customer',customerJoin);
 app.use('/join/seller',sellerJoin);
 app.use('/join/employee',employeeJoin);
+app.use('/login',login);
+//app.use('./book/detail',bookDetailPage);
 //app.use('/board', board);
+
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
