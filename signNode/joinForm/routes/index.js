@@ -29,7 +29,7 @@ router.get('/', function(req,res,next) {
   res.sendFile(path.join(__dirname, '/customerJoin'))
 })*/
 
-/*POST 회원가입*/
+/*POST 구매자 회원가입*/
 router.post('/join/customer', function(req,res,next){
   var datas = {
     "cust_id" : req.body.id,
@@ -55,6 +55,56 @@ router.post('/join/customer', function(req,res,next){
             console.log("rows : " + JSON.stringify(rows));
 
             res.redirect('/join/customer');
+            connection.release();
+        });
+    });
+});
+
+/*POST 판매자 회원가입*/
+router.post('/join/seller', function(req,res,next){
+  var datas = {
+    "sell_id" : req.body.id,
+    "sell_pwd" : req.body.passwd,
+    "sell_name" : req.body.name,
+    "sell_email" : req.body.email,
+
+    "sell_phone_num" : req.body.tel,
+    /*"sell_secession" : req.body.sell_secession*/
+  }
+
+  console.log(datas.sell_id);
+  
+  pool.getConnection(function(err,connection){
+        connection.query('INSERT INTO seller SET ?', datas,function(err,rows){
+            if(err) console.error("err : "+err);
+            console.log("rows : " + JSON.stringify(rows));
+
+            res.redirect('/join/seller');
+            connection.release();
+        });
+    });
+});
+
+/*POST 관리자 회원가입*/
+router.post('/join/employee', function(req,res,next){
+  var datas = {
+    "emp_id" : req.body.id,
+    "emp_pwd" : req.body.passwd,
+    "emp_name" : req.body.name,
+    "emp_email" : req.body.email,
+
+    "emp_phone_num" : req.body.tel,
+    /*"emp_secession" : req.body.emp_secession*/
+  }
+
+  console.log(datas.emp_id);
+  
+  pool.getConnection(function(err,connection){
+        connection.query('INSERT INTO employee SET ?', datas,function(err,rows){
+            if(err) console.error("err : "+err);
+            console.log("rows : " + JSON.stringify(rows));
+
+            res.redirect('/join/employee');
             connection.release();
         });
     });

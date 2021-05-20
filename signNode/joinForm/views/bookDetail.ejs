@@ -7,73 +7,10 @@
         <script src = "/javascripts/jquery-3.6.0.min.js"></script>
     </head>
     <body>
-        <form id = "chooseForm" action = "/join" method = "post">
-            <tr>
-                <td colspan="3">
-                    <input type = "button" id = "회원가입" name = "회원가입" value = "회원가입" onclick="location.href = '/join'">
-                    <input type = "button" id = "아이디 찾기" name = "아이디 찾기" value = "아이디 찾기" onclick="location.href = '/join/seller'">
-                    <input type = "button" id = "비밀번호 찾기" name = "비밀번호 찾기" value = "비밀번호 찾기" onclick="location.href = '/join/employee'">
-                </td>
-            </tr>
-        </form>
-        <br></br>
         <h1><%=title %></h1>
         <form id = "bookDetail" action = "/bookDetail" method = "post">
-            <tr>
-                <th>아이디</th>
-                <td><input type = "text" name = "id" id = "id" size = "12" maxlength = "12"> </td>
-            </tr>
-            <tr>
-                <th>비밀번호</th>
-                <td><input type = "password" name = "passwd" id = "passwd" size = "12" maxlength = "12"> </td>
-            </tr>
-        </form>
-        <form>
             <table width = "1000" height = "500" border = "2">
                 <tr>
-                    <td rowspan = "6'"> 표지</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                </tr>
-                <!-- <tr>
                     <td rowspan = "6">표지</td>
                     <td colspan = "5">제목</td>
                 </tr>
@@ -82,13 +19,21 @@
                     <td colspan = "2">출판사</td>
                 </tr>
                 <tr>
-                    <td>가격</td>
-                    <td rowspan = "2">구매</td>
+                    <td colspan = "3">가격</td>
+                    <td rowspan = "2">
+                        <input type = "button" id = "구매" name = "구매" value = "구매" onclick="location.href = '/join/seller'">
+                    </td>
+                    <!-- oneclick 추가 -->
                 </tr>
                 <tr>
-                    <td rowspan = "3">줄거리</td>
-                    <td rowspan = "2">장바구니</td>
-                </tr> -->
+                    <td colspan = "3" rowspan = "3">줄거리</td>
+                </tr>
+                <tr>
+                    <td rowspan = "2">
+                        <input type = "button" id = "장바구니" name = "장바구니" value = "장바구니" onclick="location.href = '/join/employee'">
+                    </td>
+                    <!-- oneclick 추가 -->
+                </tr>
             </table>
         </form>
     </body>
