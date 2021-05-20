@@ -11,7 +11,7 @@ var pool = mysql.createPool({
 });
 var path = require('path');
 
-/* GET home page. */
+/* GET home page. customer TABLE 불러오기 */
 router.get('/', function(req,res,next) {
   pool.getConnection(function(err,connection){
     connection.query('SELECT * FROM customer',function(err,rows){
@@ -45,18 +45,72 @@ router.post('/join/customer', function(req,res,next){
     "birthday" : req.body.birth,
   
     "gender" : req.body.gender
+  }
+
+  console.log(datas.cust_id);
+  
+  pool.getConnection(function(err,connection){
+        connection.query('INSERT INTO customer SET ?', datas,function(err,rows){
+            if(err) console.error("err : "+err);
+            console.log("rows : " + JSON.stringify(rows));
+
+            res.redirect('/join/customer');
+            connection.release();
+        });
+    });
+});
+
+/* GET home page. book TABLE 불러오기 */
+router.get('/book', function(req,res,next) {
+  pool.getConnection(function(err,connection){
+    connection.query('SELECT * FROM book',function(err,rows){
+      //'SELECT * FROM customer' -> 'SELECT * FROM book' : 성공
+      if(err) console.error("err : "+err);
+      console.log("rows : " + JSON.stringify(rows));
+
+      res.render('index', { title: 'test',rows: rows});
+      connection.release();
+    });
+  });
+});
+
+router.post('/book/detail', function(req,res,next){
+  var datas = {
+    // "book_num" : req.body.book_num,
+    "book_title" : req.body.title,
+    "book_genre" : req.body.genre,
+    "book_price" : req.body.price,
+    "book_content" : req.body.content,
+    // "image" : req.body.image,
+    "author" : req.body.author,
+    "publisher" : req.body.publisher
+    // "book_count" : req.body.book_count,
+    // "book_sellcount" : req.body.book_sellcount,
+    // "book_reviewcount" : req.body.book_reviewcount,
+    // "book_score" : req.body.book_score
 }
 
-console.log(datas.cust_id);
+console.log(datas.book_title);
   
 pool.getConnection(function(err,connection){
-      connection.query('INSERT INTO customer SET ?', datas,function(err,rows){
+      connection.query('INSERT INTO book SET ?', datas,function(err,rows){
           if(err) console.error("err : "+err);
           console.log("rows : " + JSON.stringify(rows));
 
-          res.redirect('/join/customer');
+          res.redirect('/book/detail');
           connection.release();
       });
   });
 });
+
+/* GET users listing. */
+router.get('/book/detail', function(req, res, next) {
+  res.render('detail', {title: '책 상세 페이지!'});
+});
+
+router.post('/book/detail', function(req, res, next) {
+  console.log('req.body: ' + JSON.stringify(req.body));
+  res.json(req.body);
+});
+
 module.exports = router;
