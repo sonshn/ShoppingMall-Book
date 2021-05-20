@@ -6,10 +6,3 @@ Repository for ShoppingMall-Book (SourceTree)
 5/13 Create Repository + Registration Implementation Start
 
 5/14 회원가입 폼 작성 + MySQL 연동 오류
-
-5/17 구매자 MySQL 연동 성공
-<<<<<<< HEAD
-
-5/20 .gitignore 추가 (README는 안되는 듯)
-=======
->>>>>>> 7ff556dbaf90145c8681d0066f45600ab8e3e43c
