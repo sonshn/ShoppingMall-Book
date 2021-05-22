@@ -1,0 +1,9 @@
+Master가 아닌 ce2018202064로 checkout(더블 클릭)하고
+
+파일 상태 -> 익스플로러에서 열기 -> 파일 생성 및 편집
+
+하고나서 commit. 
+
+github page에서도 master branch 눌렀을 때 이 파일이 안 보이고
+
+ce2018202064 branch에서만 이 파일이 존재해야 성공!
