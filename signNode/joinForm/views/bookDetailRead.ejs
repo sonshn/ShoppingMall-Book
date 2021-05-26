@@ -72,12 +72,12 @@
                     <!-- oneclick 추가 -->
                 </tr>
                 <br></br>
+                <tr>
+                    <td colspan = "2">
+                        <button type = "submit">수정</button>
+                    </td>
+                </tr>
             </table>
-            <tr>
-                <td colspan = "2">
-                    <button type = "submit">수정</button>
-                </td>
-            </tr>
         </form>
         <form action="/book/detail/delete" method="post">
             <input type="hidden" name="book_num" value="<%= row.book_num %>"/>

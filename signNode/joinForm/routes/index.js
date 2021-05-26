@@ -151,7 +151,7 @@ router.get('/book/detail/write', function(req, res, next) {
 
 router.post('/book/detail/write', upload.single("image"), function(req,res,next){
   var datas = {
-    "book_num" : req.body.book_num,
+    //"book_num" : req.body.book_num,
     "book_title" : req.body.title,
     "book_genre" : req.body.genre,
     "book_price" : req.body.price,
@@ -165,7 +165,7 @@ router.post('/book/detail/write', upload.single("image"), function(req,res,next)
     // "book_score" : req.body.book_score
 }
 
-console.log(datas.book_num);
+console.log(datas.book_num);//undefined가 정상
 console.log(datas.book_title);
   
 pool.getConnection(function(err,connection){
@@ -225,19 +225,20 @@ router.post('/book/detail/update', upload.single("image"), function(req,res,next
   var image = req.file.originalname;
   var author = req.body.author;
   var publisher = req.body.publisher;
-  var datas = [book_title, book_genre, book_price, book_content, image, author, publisher];
+  var datas = [book_title, book_genre, book_price, book_content, image, author, publisher, book_num];
   
 console.log(book_num);
 console.log(book_genre);
-
-var sql = "UPDATE book SET book_title=?, book_genre=?, book_price = ?, book_content = ?, image = ?, author=?, publisher=? WHERE book_num";
+console.log(publisher);
+console.log(datas);
 
 pool.getConnection(function(err,connection){
+  var sql = "UPDATE book SET book_title=?, book_genre=?, book_price = ?, book_content = ?, image = ?, author=?, publisher=? WHERE book_num = ?";
   connection.query(sql, datas, function(err,row){
       if(err) console.error("err : "+err);
       console.log("row : " + JSON.stringify(row));
 
-      res.redirect('/book');//1. 검색결과 페이지 2. 조회 페이지
+      res.redirect('/book');//후보 1. 검색결과 페이지 2. 조회 페이지
       //res.redirect('/book/detail/read/' + book_num);
       connection.release();
     });
