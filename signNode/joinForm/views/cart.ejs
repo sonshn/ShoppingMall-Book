@@ -71,7 +71,7 @@
                     <td><%= oneItem.order_price = (oneItem.book_price * oneItem.quantity) %></td>
                     <!-- 이 밑부분도 구매/장바구니 페이지 여부에 따라 다름 -->
                     <td colspan = "2">
-                        <button type = "submit">구매</button>
+                        <input type = "button" id = "구매화면으로 이동" name = "구매화면으로 이동" value = "구매화면으로 이동" onclick="location.href = '/orders/buy'">
                         <button type = "submit">삭제</button>
                     </td>
                 </tr>
